@@ -17,7 +17,7 @@
                 fat: 120
             },
             {
-                id: 'id2',
+                _id: 'id2',
                 name: 'vajas kenyer',
                 difficulty: 0,
                 time: '12m',

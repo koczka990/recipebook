@@ -55,7 +55,8 @@ module.exports = function (app) {
         render(objRepo, 'recipe'));
 
     app.get('/manual/:recipeid/addIngredient',
-        getIngredient(objRepo),
+        getRecipe(objRepo), //itt nem biztos hogy szukseg van erre
+        getIngredients(objRepo),
         addIngredient(objRepo),
         render(objRepo, 'addIngredient'));
 

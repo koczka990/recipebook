@@ -23,26 +23,26 @@
               <th scope="col">Unit</th>
               <th scope="col">kcal</th>
               <th scope="col">Protein</th>
-              <th scope="col">CarbonHidrates</th>
+              <th scope="col">Carbohydrate</th>
               <th scope="col">Fat</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                <a href="/manual/123">Apple</a>
-              </th>
-              <td>kg</td>
-              <td>1</td>
-              <td>520</td>
-              <td>3</td>
-              <td>114</td>
-              <td>2</td>
-              <td>
-                <a href="/manual/123" class="btn btn-success">ADD</a>
-              </td>
-            </tr>
+            <% ingredients.forEach(function(ingredient) { %>
+              <tr>
+                <th scope="row"><%= ingredient.name %></th>
+                <td><%= ingredient.measurement %></td>
+                <td><%= ingredient.unit %></td>
+                <td><%= ingredient.kcal %></td>
+                <td><%= ingredient.protein %></td>
+                <td><%= ingredient.carbohydrate %></td>
+                <td><%= ingredient.fat %></td>
+                <td>
+                  <a href="/manual/<%= recipe._id %>" class="btn btn-success">ADD</a>
+                </td>
+              </tr>
+            <% }); %>
             
           </tbody>
         </table>
