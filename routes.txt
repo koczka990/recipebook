@@ -1,0 +1,75 @@
+Receptek és Hozzávalók
+
+- index.html - Receptek listája
+- newRecipe.html - uj recept letrehozasa meg hozzavalok nelkul
+- editRecipe.html - meglevo recept alapadatainak modositasa (elozovel osszevonjuk?)
+- ingredients.html - a tarolt hozzavalok listaja
+- newIngredient.html - uj hozzavalo felvetele
+- editIngredient - meglevo hozzavalo szerkesztese (elozovel osszevonni)
+- recipe.html - (itt most applepie.html) egy konkret recept oldala, a hozza tartozo hozzavalok listajaval
+- addIngredient.html - hozzavalo hozzaadasa egy recepthez
+
+Routing
+
+renderMW
+
+middlewares/recipe
+    getRecipesMW.js
+    saveRecipeMW.js
+    getRecipeMW.js
+    delRecipeMW.js
+
+middlewares/ingredient
+    getIngredientsMW.js
+    saveIngredientMW.js
+    getIngredientMW.js
+    delIngredientMW.js
+    addIngredientMW.js
+
+
+GET /                                               - index.html
+    getRecipeMW
+    renderMW
+
+GET, POST /recept/new                                     - newRecipe.html
+    saveRecipeMW
+    renderMW
+
+GET, POST /recept/edit/:receptid                          - editRecipe.html
+    getRecipeMW
+    saveRecipeMW
+    renderMW
+
+GET /recept/del/:receptid
+    getRecipeMW
+    delRecipeMW
+    renderMW
+
+GET /ingredients                                    - ingredients.html
+    getIngredientsMW
+    renderMW
+
+GET, POST /ingredient/new                                 - newIngredient.html
+    saveIngredientMW
+    renderMW
+
+GET, POST /ingredient/edit/:ingredientid                  - editIngredient.html
+    getIngredientMW
+    saveIngredientMW
+    renderMW
+
+GET /ingredient/del/:ingredientid
+    getIngredientMW
+    delIngredientMW
+    renderMW
+
+
+GET /manual/:recipeid                               - recipe.html
+    getRecipeMW 
+    getRecipeIngredientsMW
+    renderMW
+
+GET, POST /manual/:recipeid/addIngredient                 - addIngredient.html (itt nem tudom hogy a POSTnal a routeba kellene e lennie az adott hozzavalonak)
+    getIngredientsMW
+    addIngredientMW
+    renderMW
