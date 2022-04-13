@@ -2,8 +2,9 @@
  * renders the page given to it with the render engine
  */
 
- module.exports = function (objectrepository) {
+ module.exports = function (objectrepository, viewName) {
     return function (req, res, next) {
-        return next();
+
+        res.render(viewName);
     };
 };

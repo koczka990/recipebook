@@ -15,9 +15,7 @@ const saveRecipe = require('../middlewares/recipe/saveRecipe');
 module.exports = function (app) {
     const objRepo = {};
 
-    app.use('/',
-        getRecipes(objRepo),
-        render(objRepo, 'index'));
+    
 
     app.use('/recept/new',
         saveRecipe(objRepo),
@@ -35,7 +33,7 @@ module.exports = function (app) {
 
     app.get('/ingredients',
         getIngredients(objRepo),
-        render(objRepo, 'ingredints'));
+        render(objRepo, 'ingredients'));
 
     app.get('/ingredient/new',
         saveIngredient(objRepo),
@@ -60,4 +58,8 @@ module.exports = function (app) {
         getIngredient(objRepo),
         addIngredient(objRepo),
         render(objRepo, 'addIngredient'));
+
+    app.use('/',
+        getRecipes(objRepo),
+        render(objRepo, 'index'));
 };

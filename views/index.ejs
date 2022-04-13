@@ -1,7 +1,7 @@
 <%- include('header') -%>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid d-flex flex-row-reverse">
-        <a class="btn btn-outline-info" href="ingredients.html">Ingredients</a>
+        <a class="btn btn-outline-info" href="/ingredients">Ingredients</a>
       </div>
     </nav>
 
@@ -24,61 +24,32 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                <a href="recipes/applepie.html">Apple Pie</a>
-              </th>
-              <td>2</td>
-              <td>2h</td>
-              <td>1200</td>
-              <td>20</td>
-              <td>400</td>
-              <td>120</td>
-              <td>
-                <button class="btn btn-danger">X</button>
-                <a class="btn btn-info" href="recipes/applepie.html">INFO</a>
-                <a class="btn btn-secondary" href="editRecipe.html">EDIT</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <a href="recipes/applepie.html">Apple Pie</a>
-              </th>
-              <td>2</td>
-              <td>2h</td>
-              <td>1200</td>
-              <td>20</td>
-              <td>400</td>
-              <td>120</td>
-              <td>
-                <button class="btn btn-danger">X</button>
-                <a class="btn btn-info" href="recipes/applepie.html">INFO</a>
-                <a class="btn btn-secondary" href="editRecipe.html">EDIT</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <a href="recipes/applepie.html">Apple Pie</a>
-              </th>
-              <td>2</td>
-              <td>2h</td>
-              <td>1200</td>
-              <td>20</td>
-              <td>400</td>
-              <td>120</td>
-              <td>
-                <button class="btn btn-danger">X</button>
-                <a class="btn btn-info" href="recipes/applepie.html">INFO</a>
-                <a class="btn btn-secondary" href="editRecipe.html">EDIT</a>
-              </td>
-            </tr>
+            <% recipes.forEach(function(recipe) { %>
+              <tr>
+                <th scope="row">
+                  <a href="/manual/<%= recipe._id %>"><%= recipe.name %></a>
+                </th>
+                <td><%= recipe.difficulty %></td>
+                <td><%= recipe.time %></td>
+                <td><%= recipe.kcal %></td>
+                <td><%= recipe.protein %></td>
+                <td><%= recipe.carbohydrate %></td>
+                <td><%= recipe.fat %></td>
+                <td>
+                  <button class="btn btn-danger">X</button>
+                  <a class="btn btn-info" href="/manual/<%= recipe._id %>">INFO</a>
+                  <a class="btn btn-secondary" href="/recept/edit/<%= recipe._id %>">EDIT</a>
+                </td>
+              </tr>
+            <% }); %> 
+            
           </tbody>
         </table>
       </div>
       <div class="row">
         <div class="col-10"></div>
         <div class="col-2">
-          <a href="newRecipe.html" class="btn btn-primary">New Recipe</a>
+          <a href="/recept/new" class="btn btn-primary">New Recipe</a>
         </div>
       </div>
     </div>
