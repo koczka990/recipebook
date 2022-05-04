@@ -9,7 +9,7 @@ const RecipeIngredient = db.model('RecipeIngredient', {
     },
     _containingRecipe: {
         type: Schema.Types.ObjectId,
-        ref: 'Ingredient'
+        ref: 'Recipe'
     }
 });
 
