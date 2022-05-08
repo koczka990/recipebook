@@ -1,12 +1,14 @@
-var express = require('express');
-var app = express();
-app.set('view engine', 'ejs');
+const 
 
-//app.use(express.static('static'));
+// var express = require('express');
+// var app = express();
+// app.set('view engine', 'ejs');
 
-// Load routing
-require('./route/index')(app);
+// //app.use(express.static('static'));
 
-app.listen(3000, function () {
-  console.log('Listening on :3000');
-});
+// // Load routing
+// require('./route/index')(app);
+
+// app.listen(3000, function () {
+//   console.log('Listening on :3000');
+// });
