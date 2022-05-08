@@ -41,7 +41,7 @@ module.exports = function (app) {
         getIngredients(objRepo),
         render(objRepo, 'ingredients'));
 
-    app.get('/ingredient/new',
+    app.use('/ingredient/new',
         saveIngredient(objRepo),
         render(objRepo, 'newIngredient'));
 

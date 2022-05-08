@@ -6,37 +6,37 @@
       <div class="row">
         <div class="col-sm-4 col-0"></div>
         <div class="col-sm-4 col-12">
-          <form>
+          <form method="POST">
             <div class="mb-3">
-              <label for="ingredientNameInput" class="form-label">Name</label>
-              <input type="text" class="form-control" id="ingredientNameInput" />
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name"/>
             </div>
             <div class="mb-3">
-              <label for="measurementInput" class="form-label">Measurement</label>
-              <input type="number" class="form-control" id="measurementInput" />
+              <label for="measurement" class="form-label">Measurement</label>
+              <input type="text" class="form-control" id="measurement" name="measurement"/>
             </div>
             <div class="mb-3">
-              <label for="unitInput" class="form-label">Unit</label>
-              <input type="text" class="form-control" id="unitInput" />
+              <label for="unit" class="form-label">Unit</label>
+              <input type="number" class="form-control" id="unit" name="unit"/>
             </div>
             <div class="mb-3">
-                <label for="kcalInput" class="form-label">kCal</label>
-                <input type="number" class="form-control" id="kcalInput" />
+                <label for="kcal" class="form-label">kCal</label>
+                <input type="number" class="form-control" id="kcal" name="kcal"/>
               </div>
               <div class="mb-3">
-                <label for="proteinInput" class="form-label">Protein</label>
-                <input type="number" class="form-control" id="proteinInput" />
+                <label for="protein" class="form-label">Protein</label>
+                <input type="number" class="form-control" id="protein" name="protein"/>
               </div>
               <div class="mb-3">
-                <label for="carbohydrateInput" class="form-label">carbohydrate</label>
-                <input type="number" class="form-control" id="carbohydrateInput" />
+                <label for="carbohydrate" class="form-label">carbohydrate</label>
+                <input type="number" class="form-control" id="carbohydrate" name="carbohydrate"/>
               </div>
               <div class="mb-3">
-                <label for="fatInput" class="form-label">Fat</label>
-                <input type="number" class="form-control" id="fatInput" />
+                <label for="fat" class="form-label">Fat</label>
+                <input type="number" class="form-control" id="fat" name="fat"/>
               </div>
-            <a type="submit" class="btn btn-primary" href="/ingredients">Submit</a>
-            <a type="cancel" class="btn btn-secondary" href="/ingredients">Cancel</a>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+            <a class="btn btn-secondary" href="/ingredients">Cancel</a>
           </form>
         </div>
       </div>
