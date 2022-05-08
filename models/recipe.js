@@ -1,17 +1,15 @@
 const Schema = require('mongoose').Schema;
 const db = require('../config/db');
+const RequiredIngredient = require('./requiredIngredient');
 
 const Recipe = db.model('Recipe', {
     name: String,
     difficulty: Number,
-    time: Number,
-    requiredIngredients: {
-        quantity: Number,
-        _usedIngredient: {
-            type: Schema.Types.ObjectId,
-            ref: 'Ingredient'
-        }
-    }
+    time: String,
+    requiredIngredients: [{
+        type: Schema.Types.ObjectId,
+        ref: 'RequiredIngredient'
+    }]
 });
 
 module.exports = Recipe;
