@@ -1,5 +1,5 @@
 /**
- * returns all ingredients included by specified recipe
+ * returns recipeingredient specified by id
  */
 
  const requireOption = require('../../requireOption');
@@ -9,14 +9,11 @@
     const RequiredIngredientModel = requireOption(objectrepository, 'RequiredIngredientModel');
 
     return function (req, res, next) {
-
-        //console.log(res.locals);
-
-        RequiredIngredientModel.find({'_id': {$in: res.locals.recipe.requiredIngredients}}, (err, requiredIngredients) => {
-            if(err){
+        RequiredIngredientModel.findOne({'_id': req.params.recipeingredientid}, (err, requiredIngredient) => {
+            if(err || !requiredIngredient){
                 return next(err);
             }
-            res.locals.recipeIngredients = requiredIngredients;
+            res.locals.recipeIngredient = requiredIngredient;
             return next();
         });
     };

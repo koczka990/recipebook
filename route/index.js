@@ -12,6 +12,9 @@ const getRecipe = require('../middlewares/recipe/getRecipe');
 const getRecipes = require('../middlewares/recipe/getRecipes');
 const saveRecipe = require('../middlewares/recipe/saveRecipe');
 
+const getRecipeIngredient = require('../middlewares/recipeIngredient/getRecipeIngredient')
+const deleteRecipeIngredient = require('../middlewares/recipeIngredient/deleteRecipeIngredient')
+
 const IngredientModel = require('../models/ingredient');
 const RecipeModel = require('../models/recipe');
 const RequiredIngredientModel = require('../models/requiredIngredient');
@@ -55,20 +58,28 @@ module.exports = function (app) {
         delIngredient(objRepo),
         render(objRepo, 'ingredients'));
 
-    app.get('/manual/:recipeid',
-        getRecipe(objRepo),
-        getRecipeIngredients(objRepo),
-        render(objRepo, 'recipe'));
+    
 
     app.get('/manual/:recipeid/addIngredient',
         getRecipe(objRepo),
         getIngredients(objRepo),
         render(objRepo, 'addIngredient'));
 
+    app.use('/manual/:recipeid/del/:recipeingredientid',
+        getRecipeIngredient(objRepo),
+        deleteRecipeIngredient(objRepo),
+        render(objRepo, 'recipe'));
+
     app.use('/manual/:recipeid/addIngredient/:ingredientid',
-        getRecipe(objRepo), //itt nem biztos hogy szukseg van erre
+        getRecipe(objRepo), 
         getIngredient(objRepo),
         addIngredient(objRepo),
+        getIngredients(objRepo),
+        render(objRepo, 'addIngredient'));
+
+    app.get('/manual/:recipeid',
+        getRecipe(objRepo),
+        getRecipeIngredients(objRepo),
         render(objRepo, 'recipe'));
 
     app.use('/',

@@ -2,8 +2,38 @@
  * adds new ingredient to existning recipe
  */
 
+ const { redirect } = require('express/lib/response');
+const { Mongoose } = require('../../config/db');
+const requireOption = require('../../requireOption');
+
 module.exports = function (objectrepository) {
+
+    const RequiredIngredientModel = requireOption(objectrepository, 'RequiredIngredientModel');
+    const IngredientModel = requireOption(objectrepository, 'IngredientModel');
+
     return function (req, res, next) {
-        return next();
+        //console.log(res.locals);
+        if(typeof req.body.quantity === 'undefined'){
+            return next();
+        }
+        const quantity = req.body.quantity;
+        res.locals.requiredIngredient = new RequiredIngredientModel();
+        res.locals.requiredIngredient.quantity = quantity * res.locals.ingredient.unit;
+        res.locals.requiredIngredient.name = res.locals.ingredient.name;
+        res.locals.requiredIngredient.measurement = res.locals.ingredient.measurement;
+        res.locals.requiredIngredient._ingredient = res.locals.ingredient;
+        res.locals.requiredIngredient.save((err) => {
+            if(err) {
+                next(err);
+            }
+        });
+        res.locals.recipe.requiredIngredients.push(res.locals.requiredIngredient);
+        res.locals.recipe.save((err) => {
+            if(err) {
+                next(err);
+            }
+            return res.redirect('/manual/' + req.params.recipeid);
+        });
+        
     };
 };

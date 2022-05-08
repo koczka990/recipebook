@@ -22,13 +22,13 @@
               </tr>
             </thead>
             <tbody>
-              <% recipeIngredients.forEach(function(ingredient) { %>
+              <% recipeIngredients.forEach(function(ringredient) { %>
               <tr>
-                <th scope="row"><%= ingredient.name %></th>
-                <td><%= ingredient.quantity %></td>
-                <td><%= ingredient.unit %></td>
+                <th scope="row"><%= ringredient.name %></th>
+                <td><%= ringredient.quantity %></td>
+                <td><%= ringredient.measurement %></td>
                 <td>
-                  <button class="btn btn-danger" href="#">X</button>
+                  <a class="btn btn-danger" href="/manual/<%= recipe._id %>/del/<%= ringredient._id %>">X</a>
                 </td>
               </tr>
               <% }); %>
@@ -38,9 +38,7 @@
       </div>
       <div class="row">
         <div class="col-2">
-          <a href="/manual/<%= recipe._id %>/addIngredient" class="btn btn-primary"
-            >Add Ingredient</a
-          >
+          <a href="/manual/<%= recipe._id %>/addIngredient" class="btn btn-primary">Add Ingredient</a>
         </div>
       </div>
     </div>
