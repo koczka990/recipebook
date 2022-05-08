@@ -2,24 +2,20 @@
  * returns all ingredients included by specified recipe
  */
 
+ const requireOption = require('../../requireOption');
+
  module.exports = function (objectrepository) {
+
+    const RequiredIngredientModel = requireOption(objectrepository, 'RequiredIngredientModel');
+
     return function (req, res, next) {
 
-        res.locals.recipeIngredients = [
-            {
-                _id: 'id1',
-                name: 'Apple',
-                quantity: 0.5,
-                unit: 'kg',
-            },
-            {
-                _id: 'id2',
-                name: 'Flour',
-                quantity: 100,
-                unit: 'g',
+        RequiredIngredientModel.find({}, (err, requiredIngredients) => {
+            if(err){
+                return next(err);
             }
-        ];
-
-        return next();
+            res.locals.recipeIngredients = requiredIngredients;
+            return next();
+        });
     };
 };

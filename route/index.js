@@ -61,10 +61,15 @@ module.exports = function (app) {
         render(objRepo, 'recipe'));
 
     app.get('/manual/:recipeid/addIngredient',
-        getRecipe(objRepo), //itt nem biztos hogy szukseg van erre
+        getRecipe(objRepo),
         getIngredients(objRepo),
-        addIngredient(objRepo),
         render(objRepo, 'addIngredient'));
+
+    app.use('/manual/:recipeid/addIngredient/:ingredientid',
+        getRecipe(objRepo), //itt nem biztos hogy szukseg van erre
+        getIngredient(objRepo),
+        addIngredient(objRepo),
+        render(objRepo, 'recipe'));
 
     app.use('/',
         getRecipes(objRepo),

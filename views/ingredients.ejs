@@ -34,7 +34,7 @@
                 <td><%= ingredient.carbohydrate %></td>
                 <td><%= ingredient.fat %></td>
                 <td>
-                  <button class="btn btn-danger" href="#">X</button>
+                  <a class="btn btn-danger" href="/ingredient/del/<%= ingredient._id %>">X</a>
                   <a class="btn btn-secondary" href="/ingredient/edit/<%= ingredient._id %>">EDIT</a>
                 </td>
               </tr>
