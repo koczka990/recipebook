@@ -9,16 +9,12 @@
     const RecipeModel = requireOption(objectrepository, 'RecipeModel');
 
     return function (req, res, next) {
-        console.log(req.body);
         if((typeof req.body.recipeNameInput === 'undefined') ||
            (typeof req.body.difficultyInput === 'undefined') ||
            (typeof req.body.timeInput === 'undefined')) {
-               console.log("itt a hunyo");
                return next();
            }
-        console.log("bejutottunk savebe");
         if(typeof res.locals.recipe === 'undefined'){
-            console.log("uj recipe jott letre");
             res.locals.recipe = new RecipeModel();
             res.locals.recipe.kcal = 0;
             res.locals.recipe.protein = 0;
@@ -35,7 +31,6 @@
             if(err){
                 return next(err);
             }
-            console.log("redirect jonne");
             return res.redirect('/');
         });
     };
