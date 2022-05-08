@@ -65,7 +65,9 @@ module.exports = function (app) {
         getIngredients(objRepo),
         render(objRepo, 'addIngredient'));
 
-    app.use('/manual/:recipeid/del/:recipeingredientid',
+    app.use('/manual/:recipeid/del/:recipeingredientid/:ingredientid',
+        getRecipe(objRepo),
+        getIngredient(objRepo),
         getRecipeIngredient(objRepo),
         deleteRecipeIngredient(objRepo),
         render(objRepo, 'recipe'));

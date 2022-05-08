@@ -27,6 +27,10 @@ module.exports = function (objectrepository) {
                 next(err);
             }
         });
+        res.locals.recipe.kcal += res.locals.ingredient.kcal * quantity;
+        res.locals.recipe.protein += res.locals.ingredient.protein * quantity;
+        res.locals.recipe.carbohydrate += res.locals.ingredient.carbohydrate * quantity;
+        res.locals.recipe.fat += res.locals.ingredient.fat * quantity;
         res.locals.recipe.requiredIngredients.push(res.locals.requiredIngredient);
         res.locals.recipe.save((err) => {
             if(err) {

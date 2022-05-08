@@ -28,7 +28,7 @@
                 <td><%= ringredient.quantity %></td>
                 <td><%= ringredient.measurement %></td>
                 <td>
-                  <a class="btn btn-danger" href="/manual/<%= recipe._id %>/del/<%= ringredient._id %>">X</a>
+                  <a class="btn btn-danger" href="/manual/<%= recipe._id %>/del/<%= ringredient._id %>/<%= ringredient._ingredient %> ">X</a>
                 </td>
               </tr>
               <% }); %>
