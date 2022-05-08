@@ -6,6 +6,10 @@ const Recipe = db.model('Recipe', {
     name: String,
     difficulty: Number,
     time: String,
+    kcal: Number,
+    protein: Number,
+    carbohydrate: Number,
+    fat: Number,
     requiredIngredients: [{
         type: Schema.Types.ObjectId,
         ref: 'RequiredIngredient'

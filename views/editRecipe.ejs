@@ -6,21 +6,21 @@
       <div class="row">
         <div class="col-sm-4 col-0"></div>
         <div class="col-sm-4 col-12">
-          <form>
+          <form method="POST">
             <div class="mb-3">
               <label for="recipeNameInput" class="form-label">Name</label>
-              <input type="text" class="form-control" id="recipeNameInput" />
+              <input type="text" class="form-control" id="recipeNameInput" name="recipeNameInput" value="<%= recipe.name %>"/>
             </div>
             <div class="mb-3">
               <label for="difficultyInput" class="form-label">Difficulty</label>
-              <input type="text" class="form-control" id="difficultyInput" />
+              <input type="text" class="form-control" id="difficultyInput" name="difficultyInput" value="<%= recipe.difficulty %>"/>
             </div>
             <div class="mb-3">
               <label for="timeInput" class="form-label">Time</label>
-              <input type="text" class="form-control" id="timeInput" />
+              <input type="text" class="form-control" id="timeInput" name="timeInput" value="<%= recipe.time %>"/>
             </div>
-            <a type="submit" class="btn btn-primary" href="/">Submit</a>
-            <a type="cancel" class="btn btn-secondary" href="/">Cancel</a>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+            <a class="btn btn-secondary" href="/">Cancel</a>
           </form>
         </div>
       </div>

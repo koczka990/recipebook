@@ -12,21 +12,27 @@ const getRecipe = require('../middlewares/recipe/getRecipe');
 const getRecipes = require('../middlewares/recipe/getRecipes');
 const saveRecipe = require('../middlewares/recipe/saveRecipe');
 
-module.exports = function (app) {
-    const objRepo = {};
+const IngredientModel = require('../models/ingredient');
+const RecipeModel = require('../models/recipe');
+const RequiredIngredientModel = require('../models/requiredIngredient');
 
-    
+module.exports = function (app) {
+    const objRepo = {
+        IngredientModel: IngredientModel,
+        RecipeModel: RecipeModel,
+        RequiredIngredientModel: RequiredIngredientModel
+    };
 
     app.use('/recept/new',
         saveRecipe(objRepo),
         render(objRepo, 'newRecipe'));
 
-    app.use('/recept/edit/:receptid',
+    app.use('/recept/edit/:recipeid',
         getRecipe(objRepo),
         saveRecipe(objRepo),
         render(objRepo, 'editRecipe'));
 
-    app.use('/recept/del/:receptid',
+    app.use('/recept/del/:recipeid',
         getRecipe(objRepo),
         delRecipe(objRepo),
         render(objRepo, 'index'));
