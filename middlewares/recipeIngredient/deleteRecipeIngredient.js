@@ -9,11 +9,9 @@
     const RequiredIngredientModel = requireOption(objectrepository, 'RequiredIngredientModel');
 
     return function (req, res, next) {
-        //console.log('itt hehehehe');
         if(typeof res.locals.recipeIngredient === 'undefined') {
             return next();
         }
-        console.log(res.locals);
         const quantity = res.locals.recipeIngredient.quantity / res.locals.ingredient.unit;
         res.locals.recipe.kcal -= quantity * res.locals.ingredient.kcal;
         res.locals.recipe.protein -= quantity * res.locals.ingredient.protein;

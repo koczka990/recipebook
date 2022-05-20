@@ -12,7 +12,6 @@ module.exports = function (objectrepository) {
     const IngredientModel = requireOption(objectrepository, 'IngredientModel');
 
     return function (req, res, next) {
-        //console.log(res.locals);
         if(typeof req.body.quantity === 'undefined'){
             return next();
         }

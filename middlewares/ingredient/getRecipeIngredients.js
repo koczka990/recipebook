@@ -10,8 +10,6 @@
 
     return function (req, res, next) {
 
-        //console.log(res.locals);
-
         RequiredIngredientModel.find({'_id': {$in: res.locals.recipe.requiredIngredients}}, (err, requiredIngredients) => {
             if(err){
                 return next(err);
